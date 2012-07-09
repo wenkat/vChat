@@ -13,9 +13,9 @@
 {
     NSData* data = [NSData dataWithContentsOfURL: [NSURL URLWithString: vSessionUrl]];
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray *listItems = [content componentsSeparatedByString:@"\nT1=="];
+    NSArray *listItems = [content componentsSeparatedByString:@"\n"];
     NSLog(@"ListItems Count %d", [listItems count]);
-    if ([listItems count] == 2) {
+    if ([listItems count] == 3) {
         vSessionId = [listItems objectAtIndex:0];
         vToken = [listItems objectAtIndex:1];
     }
