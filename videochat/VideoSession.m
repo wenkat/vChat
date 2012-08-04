@@ -7,9 +7,11 @@
 //
 
 #import "VideoSession.h"
+#import "ClockViewController.h"
+
 @implementation VideoSession 
 
--(void) initialize
+-(void) initialize:(ViewController *) frame
 {
     NSData* data = [NSData dataWithContentsOfURL: [NSURL URLWithString: vSessionUrl]];
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -19,6 +21,10 @@
         vSessionId = [listItems objectAtIndex:0];
         vToken = [listItems objectAtIndex:1];
     }
+    
+    
+    ClockViewController* clock = [ClockViewController alloc];
+    [clock runTimer:frame];
 }
 
 -(NSString *) getSessionId

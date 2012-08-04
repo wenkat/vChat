@@ -16,6 +16,9 @@
     OTSubscriber* _subscriber;
     VideoSession* _vSession;
 }
+@synthesize stopWatchLabel = _stopWatchLabel;
+@synthesize actionToolBar = _actionToolBar;
+@synthesize chatComplete = _chatComplete;
 
 static NSString* const kApiKey = @"15360982";
 static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to streams other than your own.
@@ -26,7 +29,7 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
 {
     [super viewDidLoad];
     _vSession = [VideoSession alloc];
-    [_vSession initialize];
+    [_vSession initialize:self];
     _session = [[OTSession alloc] initWithSessionId: [_vSession getSessionId]
                                            delegate:self];
     [self doConnect];
@@ -63,9 +66,10 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
 - (void)doPublish
 {
     
+    int toolbarHelight = self.actionToolBar.layer.frame.size.height;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
+    CGFloat screenHeight = screenRect.size.height - toolbarHelight;
     double widgetHeight = screenHeight/4;
     double widgetWidth = screenWidth/4;
     
@@ -73,12 +77,12 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     [_publisher setName:[[UIDevice currentDevice] name]];
     [_session publish:_publisher];
     [self.view addSubview:_publisher.view];
-    [_publisher.view setFrame:CGRectMake((screenWidth / 2) - (widgetWidth / 2) - 10, screenHeight - widgetHeight - 30, widgetWidth, widgetHeight)];
+    [_publisher.view setFrame:CGRectMake(screenWidth - widgetWidth, screenHeight - widgetHeight - (toolbarHelight / 2), widgetWidth, widgetHeight)];
     
     _publisher.view.layer.masksToBounds = NO;
     _publisher.view.layer.cornerRadius = 10; // if you like rounded corners
     _publisher.view.layer.shadowOffset = CGSizeMake(-15, 20);
-    _publisher.view.layer.shadowRadius = 5;
+    _publisher.view.layer.shadowRadius = 10;
     _publisher.view.layer.shadowOpacity = 0.8;
     _publisher.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:_publisher.view.bounds].CGPath;
 }
@@ -161,5 +165,11 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     [alert show];
 }
 
+- (void)viewDidUnload {
+    [self setStopWatchLabel:nil];
+    [self setActionToolBar:nil];
+    [self setChatComplete:nil];
+    [super viewDidUnload];
+}
 @end
 

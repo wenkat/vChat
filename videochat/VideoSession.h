@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ViewController.h"
+
 static NSString* const vSessionUrl = @"http://morning-window-9520.herokuapp.com/";
 
 @interface VideoSession : NSObject
@@ -16,7 +18,7 @@ static NSString* const vSessionUrl = @"http://morning-window-9520.herokuapp.com/
     NSString *vSessionId;
 }
 
-- (void) initialize;
+- (void) initialize:(ViewController *) frame;
 -(NSString *) getSessionId;
 -(NSString *) getSessionToken;
 
