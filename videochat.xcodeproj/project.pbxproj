@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0347C115BBB7F6004F96D5 /* ClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0347C015BBB7F6004F96D5 /* ClockViewController.m */; };
 		CF4ED318157CB3D200FF99A2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED317157CB3D200FF99A2 /* MobileCoreServices.framework */; };
 		CF4ED31B157CB3E200FF99A2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED31A157CB3E200FF99A2 /* CFNetwork.framework */; };
 		CF4ED31D157CB3EE00FF99A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED31C157CB3EE00FF99A2 /* SystemConfiguration.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF0347BF15BBB7F6004F96D5 /* ClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockViewController.h; sourceTree = "<group>"; };
+		CF0347C015BBB7F6004F96D5 /* ClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockViewController.m; sourceTree = "<group>"; };
 		CF4ED317157CB3D200FF99A2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CF4ED31A157CB3E200FF99A2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CF4ED31C157CB3EE00FF99A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -73,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFF85D83157CAE410017A38B /* Opentok.framework in Frameworks */,
 				CFDB1CF5157CE799005C87E4 /* CoreVideo.framework in Frameworks */,
 				CFDB1CF2157CDDF5005C87E4 /* CoreTelephony.framework in Frameworks */,
 				CF4ED32F157CB45700FF99A2 /* AVFoundation.framework in Frameworks */,
@@ -90,7 +94,6 @@
 				CFF85D62157CADD60017A38B /* UIKit.framework in Frameworks */,
 				CFF85D64157CADD60017A38B /* Foundation.framework in Frameworks */,
 				CFF85D66157CADD60017A38B /* CoreGraphics.framework in Frameworks */,
-				CFF85D83157CAE410017A38B /* Opentok.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +154,8 @@
 				CFF85D68157CADD60017A38B /* Supporting Files */,
 				CF8C096E15A849240070A55B /* VideoSession.h */,
 				CF8C096F15A849240070A55B /* VideoSession.m */,
+				CF0347BF15BBB7F6004F96D5 /* ClockViewController.h */,
+				CF0347C015BBB7F6004F96D5 /* ClockViewController.m */,
 			);
 			path = videochat;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 				CFF85D72157CADD60017A38B /* AppDelegate.m in Sources */,
 				CFF85D7B157CADD60017A38B /* ViewController.m in Sources */,
 				CF8C097015A849240070A55B /* VideoSession.m in Sources */,
+				CF0347C115BBB7F6004F96D5 /* ClockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
