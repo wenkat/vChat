@@ -20,7 +20,7 @@
 @synthesize actionToolBar = _actionToolBar;
 @synthesize chatComplete = _chatComplete;
 
-static NSString* const kApiKey = @"15360982";
+static NSString* const kApiKey = @"20750151";
 static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to streams other than your own.
 
 #pragma mark - View lifecycle

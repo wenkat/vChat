@@ -20,6 +20,9 @@
 		CF4ED32B157CB44000FF99A2 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED32A157CB44000FF99A2 /* libstdc++.dylib */; };
 		CF4ED32D157CB44E00FF99A2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED32C157CB44E00FF99A2 /* QuartzCore.framework */; };
 		CF4ED32F157CB45700FF99A2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4ED32E157CB45700FF99A2 /* AVFoundation.framework */; };
+		CF694F2316572930000B3363 /* Opentok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF694F2216572930000B3363 /* Opentok.framework */; };
+		CF741BFA162352FF0014CD8D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF741BF9162352FF0014CD8D /* Default-568h@2x.png */; };
+		CF741BFC162358830014CD8D /* opentok.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CF741BFB162358830014CD8D /* opentok.bundle */; };
 		CF8C097015A849240070A55B /* VideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8C096F15A849240070A55B /* VideoSession.m */; };
 		CFDB1CF2157CDDF5005C87E4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDB1CF1157CDDF5005C87E4 /* CoreTelephony.framework */; };
 		CFDB1CF5157CE799005C87E4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFDB1CF4157CE799005C87E4 /* CoreVideo.framework */; };
@@ -32,7 +35,6 @@
 		CFF85D75157CADD60017A38B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF85D73157CADD60017A38B /* MainStoryboard_iPhone.storyboard */; };
 		CFF85D78157CADD60017A38B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFF85D76157CADD60017A38B /* MainStoryboard_iPad.storyboard */; };
 		CFF85D7B157CADD60017A38B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF85D7A157CADD60017A38B /* ViewController.m */; };
-		CFF85D83157CAE410017A38B /* Opentok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF85D82157CAE410017A38B /* Opentok.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,9 @@
 		CF4ED32A157CB44000FF99A2 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		CF4ED32C157CB44E00FF99A2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CF4ED32E157CB45700FF99A2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CF694F2216572930000B3363 /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Opentok.framework; path = "../3rdParty/opentok-ios-sdk/Opentok.framework"; sourceTree = "<group>"; };
+		CF741BF9162352FF0014CD8D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CF741BFB162358830014CD8D /* opentok.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = opentok.bundle; sourceTree = "<group>"; };
 		CF8C096E15A849240070A55B /* VideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSession.h; sourceTree = "<group>"; };
 		CF8C096F15A849240070A55B /* VideoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSession.m; sourceTree = "<group>"; };
 		CFDB1CF1157CDDF5005C87E4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -68,7 +73,6 @@
 		CFF85D77157CADD60017A38B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		CFF85D79157CADD60017A38B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CFF85D7A157CADD60017A38B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CFF85D82157CAE410017A38B /* Opentok.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Opentok.framework; path = "../opentok-ios-sdk/Opentok.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFF85D83157CAE410017A38B /* Opentok.framework in Frameworks */,
+				CF694F2316572930000B3363 /* Opentok.framework in Frameworks */,
 				CFDB1CF5157CE799005C87E4 /* CoreVideo.framework in Frameworks */,
 				CFDB1CF2157CDDF5005C87E4 /* CoreTelephony.framework in Frameworks */,
 				CF4ED32F157CB45700FF99A2 /* AVFoundation.framework in Frameworks */,
@@ -103,6 +107,8 @@
 		CFF85D52157CADD60017A38B = {
 			isa = PBXGroup;
 			children = (
+				CF694F2216572930000B3363 /* Opentok.framework */,
+				CF741BF9162352FF0014CD8D /* Default-568h@2x.png */,
 				CFF85D67157CADD60017A38B /* videochat */,
 				CFF85D60157CADD60017A38B /* Frameworks */,
 				CFF85D5E157CADD60017A38B /* Products */,
@@ -120,6 +126,7 @@
 		CFF85D60157CADD60017A38B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF741BFB162358830014CD8D /* opentok.bundle */,
 				CFDB1CF4157CE799005C87E4 /* CoreVideo.framework */,
 				CFDB1CF1157CDDF5005C87E4 /* CoreTelephony.framework */,
 				CF4ED32E157CB45700FF99A2 /* AVFoundation.framework */,
@@ -134,7 +141,6 @@
 				CF4ED31C157CB3EE00FF99A2 /* SystemConfiguration.framework */,
 				CF4ED31A157CB3E200FF99A2 /* CFNetwork.framework */,
 				CF4ED317157CB3D200FF99A2 /* MobileCoreServices.framework */,
-				CFF85D82157CAE410017A38B /* Opentok.framework */,
 				CFF85D61157CADD60017A38B /* UIKit.framework */,
 				CFF85D63157CADD60017A38B /* Foundation.framework */,
 				CFF85D65157CADD60017A38B /* CoreGraphics.framework */,
@@ -197,7 +203,7 @@
 		CFF85D54157CADD60017A38B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "wenkat.s@gmail.com";
 			};
 			buildConfigurationList = CFF85D57157CADD60017A38B /* Build configuration list for PBXProject "videochat" */;
@@ -225,6 +231,8 @@
 				CFF85D6C157CADD60017A38B /* InfoPlist.strings in Resources */,
 				CFF85D75157CADD60017A38B /* MainStoryboard_iPhone.storyboard in Resources */,
 				CFF85D78157CADD60017A38B /* MainStoryboard_iPad.storyboard in Resources */,
+				CF741BFA162352FF0014CD8D /* Default-568h@2x.png in Resources */,
+				CF741BFC162358830014CD8D /* opentok.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +287,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -289,13 +298,17 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = armv6;
 			};
 			name = Debug;
 		};
@@ -305,32 +318,46 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv6;
 			};
 			name = Release;
 		};
 		CFF85D7F157CADD60017A38B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../opentok-ios-sdk\"",
+					"\"$(SRCROOT)/../3rdParty/opentok-ios-sdk\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "videochat/videochat-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "videochat/videochat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -338,14 +365,23 @@
 		CFF85D80157CADD60017A38B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../opentok-ios-sdk\"",
+					"\"$(SRCROOT)/../3rdParty/opentok-ios-sdk\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "videochat/videochat-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "videochat/videochat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
