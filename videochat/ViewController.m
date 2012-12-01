@@ -10,20 +10,23 @@
 #import "VideoSession.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "ios_utils.h"
+
 @implementation ViewController {
     OTSession* _session;
     OTPublisher* _publisher;
     OTSubscriber* _subscriber;
     VideoSession* _vSession;
 }
-@synthesize stopWatchLabel = _stopWatchLabel;
-@synthesize actionToolBar = _actionToolBar;
-@synthesize chatComplete = _chatComplete;
 
 static NSString* const kApiKey = @"20750151";
-static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to streams other than your own.
+static bool subscribeToSelf = NO; // Change to NO if you want to subscribe to streams other than your own.
 
 #pragma mark - View lifecycle
+
+/*
+  IOS App Callbacks for View Controller
+ */
 
 - (void)viewDidLoad
 {
@@ -35,15 +38,10 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     [self doConnect];
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return NO;
-    } else {
-        return YES;
-    }
+    return YES;
 }
 
 - (void)updateSubscriber {
@@ -56,16 +54,24 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     }
 }
 
-#pragma mark - OpenTok methods
+
+/*
+     OpenTok Methods
+ 
+ */
 
 - (void)doConnect 
 {
+    [_session addObserver:self
+               forKeyPath:@"connectionCount"
+                  options:NSKeyValueObservingOptionNew
+                  context:nil];
     [_session connectWithApiKey:kApiKey token: [_vSession getSessionToken]];
+
 }
 
 - (void)doPublish
 {
-    
     int toolbarHelight = self.actionToolBar.layer.frame.size.height;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
@@ -75,6 +81,8 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     
     _publisher = [[OTPublisher alloc] initWithDelegate:self];
     [_publisher setName:[[UIDevice currentDevice] name]];
+    _publisher.publishAudio = YES;
+    _publisher.publishVideo = YES;
     [_session publish:_publisher];
     [self.view addSubview:_publisher.view];
     [_publisher.view setFrame:CGRectMake(screenWidth - widgetWidth, screenHeight - widgetHeight - (toolbarHelight / 2), widgetWidth, widgetHeight)];
@@ -97,7 +105,7 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
 {
     NSString* alertMessage = [NSString stringWithFormat:@"Session disconnected: (%@)", session.sessionId];
     NSLog(@"sessionDidDisconnect (%@)", alertMessage);
-    [self showAlert:alertMessage];
+    [ios_utils showAlert:alertMessage];
 }
 
 
@@ -112,8 +120,21 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
        ) {
         if (!_subscriber) {
             _subscriber = [[OTSubscriber alloc] initWithStream:stream delegate:self];
+            [_vSession StartTimerTick];
         }
     }
+    [_vSession StartTimerTick];
+}
+
+- (void)subscriberDidConnectToStream:(OTSubscriber*)subscriber
+{
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    NSLog(@"subscriberDidConnectToStream (%@)", subscriber.stream.connection.connectionId);
+    [subscriber.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    [self.view insertSubview:subscriber.view atIndex:0];
 }
 
 - (void)session:(OTSession*)session didDropStream:(OTStream*)stream{
@@ -128,47 +149,47 @@ static bool subscribeToSelf = YES; // Change to NO if you want to subscribe to s
     }
 }
 
-- (void)subscriberDidConnectToStream:(OTSubscriber*)subscriber
+
+/* 
+     Observers
+ */
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    
-    NSLog(@"subscriberDidConnectToStream (%@)", subscriber.stream.connection.connectionId);
-    [subscriber.view setFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
-    [self.view insertSubview:subscriber.view atIndex:0];
+    if ([keyPath isEqualToString:@"connectionCount"]) {
+        self.activeConnectionsLabel.text = [NSString stringWithFormat:@"Connections: %d Streams: %d", ((OTSession*)object).connectionCount, _session.streams.count];
+    }
 }
+
+
+/*
+    Error Handling
+ */
 
 - (void)publisher:(OTPublisher*)publisher didFailWithError:(OTError*) error {
     NSLog(@"publisher didFailWithError %@", error);
-    [self showAlert:[NSString stringWithFormat:@"There was an error publishing."]];
+    [ios_utils showAlert:[NSString stringWithFormat:@"There was an error publishing."]];
 }
 
 - (void)subscriber:(OTSubscriber*)subscriber didFailWithError:(OTError*)error
 {
     NSLog(@"subscriber %@ didFailWithError %@", subscriber.stream.streamId, error);
-    [self showAlert:[NSString stringWithFormat:@"There was an error subscribing to stream %@", subscriber.stream.streamId]];
+    [ios_utils showAlert:[NSString stringWithFormat:@"There was an error subscribing to stream %@", subscriber.stream.streamId]];
 }
 
 - (void)session:(OTSession*)session didFailWithError:(OTError*)error {
     NSLog(@"sessionDidFail");
-    [self showAlert:[NSString stringWithFormat:@"There was an error connecting to session %@", session.sessionId]];
+    [ios_utils showAlert:[NSString stringWithFormat:@"There was an error connecting to session %@", session.sessionId]];
 }
 
-
-- (void)showAlert:(NSString*)string {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message from video session"
-                                                    message:string
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
 
 - (void)viewDidUnload {
-    [self setStopWatchLabel:nil];
     [self setActionToolBar:nil];
-    [self setChatComplete:nil];
+    [self setTimeStepper:nil];
+    [self setDone:nil];
+    [self setActionItems:nil];
+    [self setActiveConnectionsLabel:nil];
+    [self setStopWatchLabel:nil];
     [super viewDidUnload];
 }
 @end

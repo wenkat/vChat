@@ -16,6 +16,7 @@
 	IBOutlet UILabel* clockLabel;
 	NSTimer *myTicker;
     NSDate *startDate;
+    NSDate *endDate;
 }
 
 /* New Methods */

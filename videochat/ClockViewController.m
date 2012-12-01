@@ -21,7 +21,9 @@
     // This starts the timer which fires the showActivity
     // method every 0.5 seconds
     startDate = [NSDate date];
-    myTicker = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0
+    endDate = [NSDate dateWithTimeIntervalSinceNow: 30 * 60];
+    
+    myTicker = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                       target:self
                                                     selector:@selector(updateTimer)
                                                     userInfo:nil
@@ -32,7 +34,7 @@
 - (void)updateTimer
 {
     NSDate *currentDate = [NSDate date];
-    NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:startDate];
+    NSTimeInterval timeInterval = [endDate timeIntervalSinceDate:currentDate];
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm:ss"];

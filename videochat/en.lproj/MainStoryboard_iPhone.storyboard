@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2818" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1900"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -12,31 +12,52 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.60000000000000009" contentMode="scaleToFill" barStyle="blackTranslucent" id="j19-iC-8Ov">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.50000000000000011" contentMode="scaleToFill" barStyle="blackTranslucent" id="j19-iC-8Ov">
                                 <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="add" id="8fJ-EP-gs8"/>
                                     <barButtonItem style="done" systemItem="done" id="BEd-2C-FdQ"/>
+                                    <barButtonItem style="plain" id="rsH-TL-Xeh">
+                                        <stepper key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="5" id="phw-Lq-hGG">
+                                            <rect key="frame" x="66" y="9" width="94" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </stepper>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="action" id="JIh-3X-lAW"/>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Test" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="M5S-p8-TcJ">
-                                <rect key="frame" x="125" y="427" width="169" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Connections: 0 Streams: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XPm-fY-fQt">
+                                <rect key="frame" x="20" y="0.0" width="225" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="00: 30 : 00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vuj-sQ-iFp">
+                                <rect key="frame" x="20" y="21" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="DPV-Uz-C6I" appends="YES" id="lPi-dE-Pki"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="ActionItems" destination="JIh-3X-lAW" id="kdO-b7-km5"/>
+                        <outlet property="Done" destination="BEd-2C-FdQ" id="nyt-gt-eLr"/>
+                        <outlet property="TimeStepper" destination="rsH-TL-Xeh" id="z8U-Ke-0kc"/>
                         <outlet property="actionToolBar" destination="j19-iC-8Ov" id="ajI-Kq-6E2"/>
-                        <outlet property="chatComplete" destination="BEd-2C-FdQ" id="mw6-nZ-apl"/>
-                        <outlet property="stopWatchLabel" destination="M5S-p8-TcJ" id="Swn-P9-Lxz"/>
+                        <outlet property="activeConnectionsLabel" destination="XPm-fY-fQt" id="NcN-YK-asa"/>
+                        <outlet property="stopWatchLabel" destination="vuj-sQ-iFp" id="CDn-Ym-kTe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="DPV-Uz-C6I"/>
             </objects>
         </scene>
     </scenes>
@@ -44,8 +65,11 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="ActionItems" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="Done" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="TimeStepper" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="actionToolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="chatComplete" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="activeConnectionsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stopWatchLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

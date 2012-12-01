@@ -10,10 +10,16 @@
 #import <Opentok/Opentok.h>
 
 @interface ViewController : UIViewController <OTSessionDelegate, OTSubscriberDelegate, OTPublisherDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *activeConnectionsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stopWatchLabel;
+
 @property (weak, nonatomic) IBOutlet UIToolbar *actionToolBar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *chatComplete;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *TimeStepper;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *Done;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *ActionItems;
+
+
 - (void)doConnect;
 - (void)doPublish;
-- (void)showAlert:(NSString*)string;
 @end
